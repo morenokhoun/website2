@@ -145,12 +145,59 @@ function moveBall() {
     //wall collision (bottom)
     if (ball.y + ball.size > canvas.height) {
         ball.dy = -1 * ball.dy
+        showAllBricks()
+        score = 0
     }
 
     //wall collision (left)
     if (ball.x + ball.size < 0){
         ball.dx = -1 * ball.dx
     }
+
+    //paddle collision
+    if (ball.x - ball.size > paddle.x &&
+        ball.x + ball.size < paddle.x + paddle.w &&
+        ball.y + ball.size > paddle.y) {
+            ball.dy = -1 * ball.speed
+        }
+
+        //Brick collision
+        bricks.forEach(column => {
+            column.forEach(brick => {
+                if (brick.visible) {
+                    if (
+                        ball.x - ball.size > brick.x && //left brick side
+                        ball.x + ball.size < brick.x + brick.w && //right
+                        ball.y - ball.size < brick.y + brick.h //bottom)
+                        {
+                            ball.dy = -1 * ball.dy
+                            brick.visible = false
+                            increaseSscore()
+                        }
+
+                }
+            })
+        })
+
+}
+
+//increase score
+function increaseScore() {
+    score++ //score = score + 1
+
+    if (score == brickRowCount * brickColumnCount){
+        score = 0
+        showAllBricks()
+    }
+}
+
+function showAllBricks(){
+    brick.forEach(column => {
+        column.forEach(brick => {
+            brick.visible = true
+        })
+    })
+
 }
 
 // Update canvas drawing and animation
