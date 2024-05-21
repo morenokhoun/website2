@@ -1,23 +1,26 @@
 
-.container {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    justify-content: center;
-}
 
-.link-box {
+.link-list {
     padding: 10px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: margin 0.5s ease-in;
 
 
 }
 
+.link-list a {
+    color: white;
+    text-decoration: none;
+    text-size: 50px;
+}
 
-.link-box.breakout{
+
+
+
+.choose-breakout-button{
     background-color: #0095dd;
     color: white;
     cursor: pointer;
@@ -29,7 +32,7 @@
     border-radius: 7px;
 }
 
-.link-box.insect {
+.choose-insect-button {
     background-color: #516dff;
     color: white;
     cursor: pointer;
@@ -41,7 +44,7 @@
     padding: 10px 30px;
 }
 
-.link-box.hangman{
+.choose-hangman-button{
     background-color: #34495e;
     color: white;
     cursor: pointer;
@@ -71,3 +74,15 @@ h1 {
     line-height: 1.4;
 }
 
+
+.link-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: center;
+    padding: 0;
+}
+
+.link-list li {
+    margin: 10px;
+}
